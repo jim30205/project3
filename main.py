@@ -1,5 +1,6 @@
 import tkinter as tk
 from datetime import datetime
+from tools import data
 class Window(tk.Tk):
     def __init__(self):
         super().__init__()
