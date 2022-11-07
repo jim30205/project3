@@ -14,8 +14,9 @@ class Window(tk.Tk):
         self.label.config(text=now_str)
         self.after_id=self.label.after(1000,self.change_time)
     def window_time(self):
-        print("記錄一次資料")
-        self.window_id=self.after(1000*60,self.window_time)
+        data.getDistance()
+        data.getLightValue()
+        self.window_id = self.after(1000 * 3,self.window_time)
     def delete_delay(self):
         self.label.after_cancel(self.after_id)
         self.after_cancel(self.window_id)
