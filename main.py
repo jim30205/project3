@@ -1,7 +1,7 @@
-import tkinter as tk
-from tkinter import ttk
-from datetime import datetime
-from tools import data,record
+import tkinter as tk #建立視窗用
+from tkinter import ttk 
+from datetime import datetime #時間用
+from tools import data,record #用tools資料夾的工具
 
 
 class CustomView(ttk.Treeview):
