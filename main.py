@@ -10,6 +10,10 @@ class CustomView(ttk.Treeview):
         self.heading('#1',text="日期")
         self.heading('#2',text="距離")
         self.heading('#3',text="光線")
+        #建立scrollbar
+        scrollbar = ttk.Scrollbar(master,orient=tk.VERTICAL,command=self.yview)
+        self.configure(yscroll=scrollbar.set)
+        scrollbar.pack(side=tk.RIGHT,fill=tk.BOTH,padx=(0,20))
     def addData(self,data):
         #清除第一筆資料
         data.pop(0)
@@ -29,12 +33,10 @@ class Window(tk.Tk):
         self.label = tk.Label(self,text="",font=("arial",30))
         self.label.pack(padx=50,pady=30)
         self.customView = CustomView(self,columns=('#1','#2','#3'),show='headings')
-        self.customView.pack(padx=20,pady=(0,20))
+        self.customView.pack(side=tk.LEFT,padx=(20,0),pady=(0,20))
         
-
         self.change_time()
         self.window_time()      
-
 
     def change_time(self):
         now = datetime.now()
