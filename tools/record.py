@@ -4,7 +4,9 @@ from datetime import datetime
 directory = os.path.abspath("./record")#檔案路徑
 if not os.path.isdir(directory):#建立根目錄
     os.makedirs(directory)
+filname_abs=None
 def recordData(distance,lightValue):
+    global filename_abs
     current = datetime.now()#現在時間
     current_date = current.date()
     filename = current_date.strftime("%Y-%m-%d.csv")#現在時間檔名    
@@ -19,3 +21,8 @@ def recordData(distance,lightValue):
     with open(filename_abs,"a",newline='') as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow([current.strftime("%Y-%m-%d %H:%M:%S"),distance,lightValue])
+def getData():
+    with open(filename_abs,"r",newline='') as file:
+        csv_reader = csv.reader(file)
+        data = list(csv_reader)
+    return data
