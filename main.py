@@ -1,7 +1,7 @@
-import tkinter as tk
-from datetime import datetime
-from tools import data,record
-class Window(tk.Tk):
+import tkinter as tk #建立視窗用
+from datetime import datetime #使間使用
+from tools import data,record #tools裡面的套件
+class Window(tk.Tk):#視窗介面
     def __init__(self):
         super().__init__()   
         self.label = tk.Label(self,text="",font=("arial",30))
@@ -10,7 +10,7 @@ class Window(tk.Tk):
         self.window_time()
         
         
-    def change_time(self):
+    def change_time(self): #顯示現在時間用
         now = datetime.now()
         now_str = now.strftime("%Y-%m-%d %H:%M:%S")
         self.label.config(text=now_str)
@@ -39,7 +39,7 @@ class Window(tk.Tk):
         
         
         
-def main():
+def main():#執行程式
     window =  Window()
     window.title("數位時鐘")
     window.protocol("WM_DELETE_WINDOW",window.delete_delay)
