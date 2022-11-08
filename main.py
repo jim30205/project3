@@ -1,6 +1,6 @@
 import tkinter as tk
 from datetime import datetime
-from tools import data
+from tools import data,record
 class Window(tk.Tk):
     def __init__(self):
         super().__init__()   
@@ -27,9 +27,10 @@ class Window(tk.Tk):
 
         lightValue = data.getLightValue()
         print(f"光線:{lightValue:.1f}")
+        record.recordData(distance=100,lightValue=200)
 
         
-        self.window_id = self.after(1000 * 3,self.window_time)
+        self.window_id = self.after(1000 * 30,self.window_time)
 
     def delete_delay(self):
         self.label.after_cancel(self.after_id)
