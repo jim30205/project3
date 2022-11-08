@@ -5,10 +5,10 @@ from gpiozero import DistanceSensor
 #gpio24 -> trig
 
 sensor = DistanceSensor(23, 24)
-lightValue = MCP3008(7)
+lightSensor = MCP3008(7)
 
-def getDistance():
+def getDistance():#回傳距離
     return sensor.distance*100;
 
-def getLightValue():    
-    print(f"光線:{lightValue.value * 1000:.1f}")
+def getLightValue():#回傳光線    
+    return lightSensor.value * 1000
