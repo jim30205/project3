@@ -1,8 +1,6 @@
 import tkinter as tk
 from datetime import datetime
 from tools import data
-
-
 class Window(tk.Tk):
     def __init__(self):
         super().__init__()   
@@ -11,7 +9,6 @@ class Window(tk.Tk):
         self.change_time()
         self.window_time()
         
-
         
     def change_time(self):
         now = datetime.now()
@@ -20,7 +17,16 @@ class Window(tk.Tk):
         self.after_id = self.label.after(1000,self.change_time)
 
     def window_time(self):
-        data.getDistance()
+        distance = data.getDistance()
+        print(distance)
+        if distance < 100.0: 
+            print(f"距離:{distance:.2f}公分")
+        else:
+            print(f"距離:大於100公分")
+            distance = 100
+
+
+
         data.getLightValue()
         self.window_id = self.after(1000 * 3,self.window_time)
 
@@ -31,13 +37,10 @@ class Window(tk.Tk):
         
         
         
-
-
 def main():
     window =  Window()
     window.title("數位時鐘")
     window.protocol("WM_DELETE_WINDOW",window.delete_delay)
     window.mainloop()
-
 if __name__ == "__main__":
     main()
