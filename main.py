@@ -11,14 +11,14 @@ class CustomView(ttk.Treeview):
         self.heading('#2',text="距離")
         self.heading('#3',text="光線")
     def addData(self,data):
-        #
+        #清除第一筆資料
         data.pop(0)
         #
         data.reverse()
-        #
+        #反向
         for i in self.get_children():
             self.delete(i)
-        #
+        #新增所有資料
         for item in data:
             self.insert("",tk.END,values=item)
 
