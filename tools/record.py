@@ -46,6 +46,10 @@ def recordData(distance,lightValue,absolute_path):
             cred = credentials.Certificate(full_path_key)
             app = firebase_admin.initialize_app(cred)
             db = firestore.client()
+        data ={"日期":current.strftime("%Y-%m-%d %H:%M:%S"),
+        "距離":distance,"光線":lightValue}
+        db.collection('records').document(current.strftime("%Y%m%d%H%M%S")).set(data)
+
 def getData():
     with open(full_path_csvFile,"r",newline='') as file:
         csv_reader = csv.reader(file)
