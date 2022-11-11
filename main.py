@@ -1,4 +1,5 @@
 import tkinter as tk #建立視窗用
+import os
 from tkinter import ttk 
 from datetime import datetime #時間用
 from tools import data,record #用tools資料夾的工具
@@ -54,12 +55,14 @@ class Window(tk.Tk):
                
         lightValue = data.getLightValue()
         print(f"光線:{lightValue:.1f}")
+        #取得檔案絕對位置
+        absolute_path =os.path.dirname(__file__)
         #記錄資料
-        record.recordData(distance=distance,lightValue=lightValue)
+        record.recordData(distance=distance,lightValue=lightValue,absolute_path=absolute_path)
         #取得資料
         all_data = record.getData()
         self.customView.addData(all_data)
-        self.window_id = self.after(1000 * 30,self.window_time)
+        self.window_id = self.after(1000 * 5,self.window_time)
     def delete_delay(self):
         self.label.after_cancel(self.after_id)
         self.after_cancel(self.window_id)
