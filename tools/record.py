@@ -34,6 +34,9 @@ def recordData(distance,lightValue,absolute_path):
         # print("日期",current.strftime("%Y-%m-%d %H:%M:%S"))
         # print("距離",distance)
         # print("光線",lightValue)
+        relative_path_key="private/raspberry1-d07d8-firebase-adminsdk-4tlwq-68582b8dbd.json"
+        full_path_key=os.path.join(absolute_path,relative_path_key)
+        print("key:",full_path_key)
 def getData():
     with open(full_path_csvFile,"r",newline='') as file:
         csv_reader = csv.reader(file)
