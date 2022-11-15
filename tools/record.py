@@ -4,6 +4,7 @@ from datetime import datetime
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+# 新增資料到firebase
 # directory = os.path.abspath("./record")#檔案路徑
 # if not os.path.isdir(directory):#建立根目錄
 #     os.makedirs(directory)
